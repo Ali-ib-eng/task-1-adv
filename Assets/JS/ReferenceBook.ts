@@ -5,7 +5,10 @@ export class ReferenceBook extends Book{
         super(title,author,category,isAvailable);
         this.#locationCode=locationCode;
     }
+    getLocationCode():string{
+        return this.#locationCode;
+    }
     public displayInfo(): void {
-        console.log(`class ref book title is ${this.getTitle()},Author is ${this.getAuthor()},Category is ${this.getCategory()},isAvailable ${this.getIsAvailable()},locationcode is ${this.#locationCode}`)
+        console.log(`class ref book title is ${this.getTitle()},Author is ${this.getAuthor()},Category is ${this.getCategory()},isAvailable ${this.getIsAvailable()},locationcode is ${this.getLocationCode()}`)
     }
 }

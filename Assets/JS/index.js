@@ -4,6 +4,7 @@ const book1 = new Book("Animal", "Ali", "Teaching", false);
 const book2 = new Book("Human", "jafar", "story", false);
 const book3 = new Book("planets", "Moh", "story", true);
 const book4 = new Book("Human", "sara", "searchloop", true);
+const book5 = new Book("Robots", "Gorge", "searchloop", false);
 import { ReferenceBook } from "./ReferenceBook.js";
 const refBook1 = new ReferenceBook("physics", "mohammad", "searchloop", true, "a-12");
 /*book1.displayInfo();*/
@@ -11,10 +12,13 @@ refBook1.displayInfo();
 //start with no books
 import { Library } from "./Library.js";
 const library = new Library();
-const print1 = library.addBook(book1);
-const print2 = library.addBook(book2);
-const print3 = library.addBook(book3);
-const print4 = library.addBook(book4);
+//add books by hand
+library.addBook(book1);
+library.addBook(book2);
+library.addBook(book3);
+library.addBook(book4);
+library.addBook(book5);
+library.addBook(refBook1);
 const mybooksContainer = document.querySelector("#mybooksContainer");
 const searchBookinput = document.querySelector("#search");
 const select = document.querySelector("#select");
@@ -26,12 +30,13 @@ function readBooks(books) {
     if (mybooksContainer) {
         mybooksContainer.innerHTML = "";
     }
-    books.forEach((b, index) => {
+    books.forEach((b) => {
         if (mybooksContainer) {
             mybooksContainer.innerHTML += `
         <div class="viewEachBookAs_Card"><p>Title:${b.getTitle()}</p>
     <p>Author:${b.getAuthor()}</p>
     <p>Category:${b.getCategory()}</p>
+    
     <p class="${b.getIsAvailable() ? "available" : "unavailable"}" >Availablity:${b.getIsAvailable() ? "Available Now" : "Not Available Now"}</p>
     <button class="changeStatus">Change Book Status</button>
     <button class="removeBook" >Remove Book</button>
@@ -44,19 +49,19 @@ function readBooks(books) {
     //search for a book to change status
     console.log(changeStatusbutton);
     changeStatusbutton.forEach((button, index) => {
-        //Way 1: by index contract with class
+        //Way : by index contract with class
         button.addEventListener("click", () => {
             console.log("mystatusclick", books[index]);
             changeStatus(books[index]);
         });
-    }, 
+    });
     //remove a book
     removebtn.forEach((btn, i) => {
         btn.addEventListener("click", () => {
             console.log("remove number ", i);
             removeBookformLibrary(books[i]);
         });
-    }));
+    });
 }
 //apply search
 if (searchBookinput) {
