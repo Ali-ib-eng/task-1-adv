@@ -3,10 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Assets/CSS/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
-    <p id="myapp"></p>
-    <script src="./index.js"></script>
+    
+    <h1 class="greeting">Welcome in my Library Management System</h1>
+    <div id="mybooksContainer"></div>
+    <input type="search" id="search" placeholder="search by title or author">
+    <select id="select">
+    <option value="all">All Categories</option>
+    <option value="Teaching">Teaching</option>
+    <option value="Story">Story</option>
+    <option value="Searchloop">Searchloop</option>
+</select>
+    <script  type="module" src="./Assets/JS/index.js"></script>
 </body>
 </html>

@@ -1,0 +1,170 @@
+/* =========================================================
+   Library App — UI styles By Ali
+   ========================================================= */
+
+/* ---------- Design tokens ---------- */
+/*Root elements*/
+:root{
+    /*My font*/
+    --fontTo_project: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-heading: "Playfair Display", Georgia, serif;
+    /* Brand */
+    --color-primary: #7a2e2e;
+    --color-primary-hover: #5f2222;
+    --color-primary-soft: #f6e9e9;
+
+    /* Surfaces */
+    --color-bg: #faf6f1;
+    --color-surface: #ffffff;
+    --color-border: #e6ddd3;
+
+    /* Text */
+    --color-text: #2b2523;
+    --color-text-muted: #6f6560;
+
+    /* Status */
+    --color-success: #1f7a4d;
+    --color-success-bg: #e3f4ea;
+    --color-danger: #b3261e;
+    --color-danger-bg: #fbe7e5;
+
+    /* Shape & spacing */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --space-1: 8px;
+    --space-2: 16px;
+    --space-3: 24px;
+    --space-4: 32px;
+    --shadow-sm: 0 1px 3px rgba(43, 37, 35, 0.08);
+    --shadow-md: 0 8px 20px rgba(43, 37, 35, 0.803);
+    /*--transition: 0.2s ease;*/
+}
+
+/* ---------- Reset ---------- */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family:var(--fontTo_project);
+    line-height: 1.5;
+}
+/* ---------- Header---------- */
+.greeting {
+    font-family: var(--font-heading);
+    padding: var(--space-3) var(--space-4) var(--space-2);
+    text-align: center;
+    color: var(--color-primary);
+}
+
+#search,
+#select{
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto var(--space-2);
+    padding: 10px 14px;
+    font-size: 1rem;
+    color: var(--color-text);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    
+}
+
+#search::placeholder {
+    color: var(--color-text-muted);
+}
+
+#search:focus,
+#select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-soft);
+}
+
+#select {
+    cursor: pointer;
+}
+
+/* ---------- Cards grid ---------- */
+#mybooksContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4) var(--space-4);
+}
+
+/* ---------- Book card ---------- */
+.viewEachBookAs_Card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-3);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    
+}
+
+.viewEachBookAs_Card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.viewEachBookAs_Card p {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+}
+
+/* Title = first line of the card */
+.viewEachBookAs_Card p:first-child {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+/* Availability badge */
+.viewEachBookAs_Card .available,
+.viewEachBookAs_Card .unavailable {
+    align-self: flex-start;
+    margin-top: var(--space-1);
+    padding: 4px 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 999px;
+}
+.viewEachBookAs_Card .available{
+    color: var(--color-success);
+    background-color: var(--color-success-bg);
+}
+.viewEachBookAs_Card .unavailable{
+    color: var(--color-danger);
+    background-color: var(--color-danger-bg);
+}
+
+
+/* ---------- Button ---------- */
+.changeStatus{
+    display: block;
+    width: 100%;
+    margin-top: auto;
+    padding: 10px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+
+.changeStatus:hover{
+    background-color: var(--color-primary-hover);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+    #mybooksContainer {
+        padding: var(--space-2);
+    }
+}
