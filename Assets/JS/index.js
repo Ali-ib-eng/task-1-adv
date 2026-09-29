@@ -2,11 +2,12 @@
 import { Book } from "./Book.js";
 const book1 = new Book("Animal", "Ali", "Teaching", false);
 const book2 = new Book("Human", "jafar", "story", false);
-const book3 = new Book("planets", "jafar", "story", true);
-const book4 = new Book("Human", "jafar", "searchloop", true);
+const book3 = new Book("planets", "Moh", "story", true);
+const book4 = new Book("Human", "sara", "searchloop", true);
 import { ReferenceBook } from "./ReferenceBook.js";
 const refBook1 = new ReferenceBook("physics", "mohammad", "searchloop", true, "a-12");
 /*book1.displayInfo();*/
+refBook1.displayInfo();
 //start with no books
 import { Library } from "./Library.js";
 const library = new Library();
@@ -25,7 +26,7 @@ function readBooks(books) {
     if (mybooksContainer) {
         mybooksContainer.innerHTML = "";
     }
-    books.forEach((b) => {
+    books.forEach((b, index) => {
         if (mybooksContainer) {
             mybooksContainer.innerHTML += `
         <div class="viewEachBookAs_Card"><p>Title:${b.getTitle()}</p>
@@ -33,18 +34,29 @@ function readBooks(books) {
     <p>Category:${b.getCategory()}</p>
     <p class="${b.getIsAvailable() ? "available" : "unavailable"}" >Availablity:${b.getIsAvailable() ? "Available Now" : "Not Available Now"}</p>
     <button class="changeStatus">Change Book Status</button>
+    <button class="removeBook" >Remove Book</button>
     </div>
     `;
         }
     });
-    const buttons = mybooksContainer.querySelectorAll(".changeStatus");
+    const changeStatusbutton = mybooksContainer.querySelectorAll(".changeStatus");
+    const removebtn = mybooksContainer.querySelectorAll(".removeBook");
     //search for a book to change status
-    buttons.forEach((button, index) => {
+    console.log(changeStatusbutton);
+    changeStatusbutton.forEach((button, index) => {
+        //Way 1: by index contract with class
         button.addEventListener("click", () => {
             console.log("mystatusclick", books[index]);
             changeStatus(books[index]);
         });
-    });
+    }, 
+    //remove a book
+    removebtn.forEach((btn, i) => {
+        btn.addEventListener("click", () => {
+            console.log("remove number ", i);
+            removeBookformLibrary(books[i]);
+        });
+    }));
 }
 //apply search
 if (searchBookinput) {
@@ -70,6 +82,12 @@ if (select) {
         readBooks(myfilterResults);
     });
 }
+//function to remove book from UI
+const removeBookformLibrary = (book) => {
+    library.removeBook(book);
+    readBooks(library.getBooks());
+};
+//function to change status on UI
 const changeStatus = (book) => {
     console.log("click");
     library.toggleAvailability(book);

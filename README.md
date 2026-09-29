@@ -103,7 +103,7 @@ The `Library` class provides the following methods:
 * `toggleAvailability()`
 
 ## How to Run
-
+<! Note:main file is index.ts-->
 1. Clone the repository.
 2. Compile the TypeScript files to JavaScript.
 3. Open the generated HTML page in the browser.
