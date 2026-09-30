@@ -183,8 +183,12 @@
 } 
 
 /* ---------- Responsive ---------- */
-@media (max-width: 600px) {
+@media (max-width: 600px){
     #mybooksContainer {
         padding: var(--space-2);
     }
+    #search,
+#select{
+    max-width: 260px;
+}
 }
