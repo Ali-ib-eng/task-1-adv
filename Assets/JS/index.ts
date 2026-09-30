@@ -86,7 +86,7 @@ if(searchBookinput){
 //apply select 
 if(select){
     select.addEventListener("change",()=>{
-        const selectValue=select?.value;
+        const selectValue:string=select?.value;
         //all is a default value
         if(selectValue=='all'){
             return readBooks(library.getBooks());
